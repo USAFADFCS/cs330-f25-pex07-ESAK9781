@@ -1,11 +1,10 @@
 % pex5.pl
 % USAFA UFO Sightings 2024
 %
-% name: 
+% name: Elijah Sakamoto
 %
-% Documentation: 
+% Documentation: I heavily consulted and/or copied portions of the code we were given for HWVII
 %
-
 cadet(smith).
 cadet(garcia).
 cadet(chen).
@@ -22,16 +21,16 @@ time(wednesday).
 time(thursday).
 
 solve :-
-    obj(smith_o), obj(garcia_o), obj(chen_o), obj(jones_o),
-    all_different([smith_o, garcia_o, chen_o, jones_o]),
+    obj(tuesday_o), obj(wednesday_o), obj(thursday_o), obj(friday_o),
+    all_different([tuesday_o, wednesday_o, thursday_o, friday_o]),
     
-    time(smith_t), time(garcia_t), time(chen_t), time(jones_t),
-    all_different([smith_t, garcia_t, chen_t, jones_t]),
+    cadet(tuesday_p), cadet(wednesday_p), cadet(thursday_p), cadet(friday_p),
+    all_different([tuesday_p, wednesday_p, thursday_p, friday_p]),
     
-    Triples = [ [smith, smith_o, smith_t],
-                [garcia, garcia_o, garcia_t],
-                [chen, chen_o, chen_t],
-                [jones, jones_o, jones_t] ],
+    Triples = [ [tuesday_p, tuesday_o, tuesday],
+                [wednesday_p, wednesday_o, wednesday],
+                [thursday_p, thursday_o, thursday],
+                [friday_p, friday_o, friday] ],
     
     \+ member([smith, balloon, _], Triples),
     \+ member([smith, kite, _], Triples),
@@ -54,10 +53,10 @@ solve :-
     
     \+ member([_, balloon, wednesday], Triples),
     
-    tell(smith, smith_o, smith_t),
-    tell(garcia, garcia_o, garcia_t),
-    tell(chen, chen_o, chen_t),
-    tell(jones, jones_o, jones_t).
+    tell(tuesday_p, tuesday_o, tuesday),
+    tell(wednesday_p, wednesday_o, wednesday),
+    tell(thursday_p, thursday_o, thursday),
+    tell(friday_o, friday_o, friday).
     
 
 % Succeeds if all elements of the argument list are bound and different.
@@ -69,7 +68,7 @@ all_different([_]).
 tell(X, Y, Z) :- 
     write("Cadet "), write(X), write(" saw the "), write(Y), 
     write(" on "), write(Z), write("."), nl.
-
+    
 
 
 % The query to get the answer(s) or that there is no answer
