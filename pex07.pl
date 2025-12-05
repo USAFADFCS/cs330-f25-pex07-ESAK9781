@@ -3,7 +3,8 @@
 %
 % name: Elijah Sakamoto
 %
-% Documentation: I heavily consulted and/or copied portions of the code we were given for HWVII
+% Documentation: I heavily consulted and/or copied portions of the code we were given for HWVII. Will looked over my code and reminded me that Prolog is case sensitive.
+% I fixed my variables to be lower case after this feedback.
 %
 cadet(smith).
 cadet(garcia).
@@ -21,16 +22,16 @@ time(wednesday).
 time(thursday).
 
 solve :-
-    obj(tuesday_o), obj(wednesday_o), obj(thursday_o), obj(friday_o),
-    all_different([tuesday_o, wednesday_o, thursday_o, friday_o]),
+    obj(Tuesday_o), obj(Wednesday_o), obj(Thursday_o), obj(Friday_o),
+    all_different([Tuesday_o, Wednesday_o, Thursday_o, Friday_o]),
     
-    cadet(tuesday_p), cadet(wednesday_p), cadet(thursday_p), cadet(friday_p),
-    all_different([tuesday_p, wednesday_p, thursday_p, friday_p]),
+    cadet(Tuesday_p), cadet(Wednesday_p), cadet(Thursday_p), cadet(Friday_p),
+    all_different([Tuesday_p, Wednesday_p, Thursday_p, Friday_p]),
     
-    Triples = [ [tuesday_p, tuesday_o, tuesday],
-                [wednesday_p, wednesday_o, wednesday],
-                [thursday_p, thursday_o, thursday],
-                [friday_p, friday_o, friday] ],
+    Triples = [ [Tuesday_p, Tuesday_o, tuesday],
+                [Wednesday_p, Wednesday_o, wednesday],
+                [Thursday_p, Thursday_o, thursday],
+                [Friday_p, Friday_o, friday] ],
     
     \+ member([smith, balloon, _], Triples),
     \+ member([smith, kite, _], Triples),
@@ -53,10 +54,10 @@ solve :-
     
     \+ member([_, balloon, wednesday], Triples),
     
-    tell(tuesday_p, tuesday_o, tuesday),
-    tell(wednesday_p, wednesday_o, wednesday),
-    tell(thursday_p, thursday_o, thursday),
-    tell(friday_o, friday_o, friday).
+    tell(Tuesday_p, Tuesday_o, tuesday),
+    tell(Wednesday_p, Wednesday_o, wednesday),
+    tell(Thursday_p, Thursday_o, thursday),
+    tell(Friday_o, Friday_o, friday).
     
 
 % Succeeds if all elements of the argument list are bound and different.
@@ -73,5 +74,4 @@ tell(X, Y, Z) :-
 
 % The query to get the answer(s) or that there is no answer
 % ?- solve.
-
 
